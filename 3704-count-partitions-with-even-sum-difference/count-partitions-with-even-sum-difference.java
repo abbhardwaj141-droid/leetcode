@@ -1,12 +1,14 @@
 class Solution {
     public int countPartitions(int[] nums) {
-        int sum = 0;
-        for(int i=0; i<nums.length; i++){
-            sum = sum + nums[i];
+        int total=0;
+        for(int num:nums){
+            total+=num;
         }
-        if(sum % 2 == 0){
-            return nums.length-1;
+        
+        if(total%2!=0){
+            return 0;
         }
-        return 0;
+        
+        return nums.length-1;
     }
 }
