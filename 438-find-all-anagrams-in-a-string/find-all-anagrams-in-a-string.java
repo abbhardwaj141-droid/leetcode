@@ -9,11 +9,9 @@ class Solution {
 
         for(int i=0; i<p.length();i++){
             p_freq[p.charAt(i) - 'a']++;
-        }
-        int k = p.length();
-        for(int i=0; i<k; i++){
             Windo_freq[s.charAt(i) - 'a']++;
         }
+        int k = p.length();
         if(Arrays.equals( p_freq, Windo_freq)){
             ans.add(0);
         }
