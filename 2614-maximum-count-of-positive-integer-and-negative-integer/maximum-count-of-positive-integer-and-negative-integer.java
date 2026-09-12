@@ -1,14 +1,30 @@
 class Solution {
     public int maximumCount(int[] nums) {
-        int positive = 0, negative = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] > 0) {
-                positive++;
-            }
-            if (nums[i] < 0) {
-                negative++;
+        int n = nums.length;
+        int left = 0;
+        int right = n - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] >= 0) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
             }
         }
+
+        int negative = left;
+        left = 0;
+        right = n - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+    
+            if (nums[mid] > 0) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        int positive = n - left;
         return Math.max(negative, positive);
     }
 }
