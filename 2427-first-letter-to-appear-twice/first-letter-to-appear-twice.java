@@ -1,7 +1,7 @@
 class Solution {
     public char repeatedCharacter(String s) {
         HashSet<Character> set = new HashSet<>();
-
+        char ch = ' ';
         for (int i = 0; i < s.length(); i++) {
 
             if (set.contains(s.charAt(i))) {
@@ -10,6 +10,6 @@ class Solution {
                 set.add(s.charAt(i));
             }
         }
-        return ' ';
+        return ch;
     }
 }
