@@ -6,8 +6,9 @@ class Solution {
 
             if (set.contains(s.charAt(i))) {
                 return s.charAt(i);
-            } 
-          set.add(s.charAt(i));
+            } else {
+                set.add(s.charAt(i));
+            }
         }
         return ch;
     }
