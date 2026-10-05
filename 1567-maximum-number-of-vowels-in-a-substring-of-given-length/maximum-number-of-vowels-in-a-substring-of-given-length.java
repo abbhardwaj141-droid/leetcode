@@ -4,20 +4,20 @@ class Solution {
     }
 
     public int maxVowels(String s, int k) {
-        int i = 0, j = 0, count = 0;
+        int left = 0, right = 0, count = 0;
         int Max = Integer.MIN_VALUE;
-        while (j < s.length()) {
-            if (isVowel(s.charAt(j))) {
+        while (right < s.length()) {
+            if (isVowel(s.charAt(right))) {
                 count++;
             }
-            if (j - i + 1 == k) {
+            if (right - left + 1 == k) {
                 Max = Math.max(Max, count);
-                if (isVowel(s.charAt(i))) {
+                if (isVowel(s.charAt(left))) {
                     count--;
                 }
-                i++;
+                left++;
             }
-            j++;
+            right++;
         }
         return Max;
     }
