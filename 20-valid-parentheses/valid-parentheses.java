@@ -1,32 +1,22 @@
 class Solution {
     public boolean isValid(String s) {
-
-        StringBuilder str = new StringBuilder();
-
-        for (int i = 0; i < s.length(); i++) {
-
+        Stack<Character> st = new Stack<>();
+        for(int i=0; i<s.length(); i++){
             char ch = s.charAt(i);
-
-            if (ch == '(' || ch == '[' || ch == '{') {
-                str.append(ch);
-            } 
-            else {
-
-                if (str.length() == 0)
-                    return false;
-
-                char last = str.charAt(str.length() - 1);
-
-                if ((ch == ')' && last != '(') ||
-                    (ch == ']' && last != '[') ||
-                    (ch == '}' && last != '{')) {
-                    return false;
-                }
-
-                str.deleteCharAt(str.length() - 1);
+            if(ch == '(' || ch == '{' || ch == '[')st.push(ch);
+            else{
+                if(st.size() == 0)return false;
+                char top = st.peek();
+                if(samebracket(top,ch))st.pop();
+                else return false;
             }
         }
-
-        return str.length() == 0;
+        return(st.size() == 0);
+    }
+    public boolean samebracket(char a,char b){
+        if(a == '(' && b == ')')return true;
+        if(a == '{' && b == '}')return true;
+        if(a == '[' && b == ']')return true;
+        else return false;
     }
 }
